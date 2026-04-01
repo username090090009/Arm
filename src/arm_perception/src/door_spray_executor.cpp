@@ -177,6 +177,9 @@ private:
         moveit_msgs::RobotTrajectory trajectory;
         const bool avoid_collisions = true;
 
+        // Update start state to current robot state before Cartesian planning
+        move_group_.setStartStateToCurrentState();
+
         ROS_INFO("Computing Cartesian path for %zu spray waypoints...", spray_waypoints.size());
 
         double fraction = move_group_.computeCartesianPath(
