@@ -1,0 +1,8 @@
+prefix=/home/zxy/arm11_ws/devel
+
+Name: arm_perception
+Description: Description of arm_perception
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

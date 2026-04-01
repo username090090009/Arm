@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+<robot name="door_panel" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  
+  <link name="door_link">
+
+    
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="8.0"/>
+      <inertia ixx="0.2" ixy="0.0" ixz="0.0"
+               iyy="0.2" iyz="0.0"
+               izz="0.2"/>
+    </inertial>
+
+    
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.70 0.90"/>
+      </geometry>
+      <material name="door_main_white">
+        <color rgba="0.92 0.92 0.95 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.90 1.20"/>
+      </geometry>
+    </collision>
+  </link>
+
+  
+  <link name="door_top_frame">
+    <visual>
+      <origin xyz="0.012 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.70 0.06"/>
+      </geometry>
+      <material name="door_frame_gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="door_top_frame_joint" type="fixed">
+    <parent link="door_link"/>
+    <child link="door_top_frame"/>
+    <origin xyz="0.03 0 0.42" rpy="0 0 0"/>
+  </joint>
+
+  
+  <link name="door_bottom_frame">
+    <visual>
+      <origin xyz="0.012 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.70 0.06"/>
+      </geometry>
+      <material name="door_frame_gray2">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="door_bottom_frame_joint" type="fixed">
+    <parent link="door_link"/>
+    <child link="door_bottom_frame"/>
+    <origin xyz="0.03 0 -0.42" rpy="0 0 0"/>
+  </joint>
+
+  
+  <link name="door_left_frame">
+    <visual>
+      <origin xyz="0.012 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.06 0.78"/>
+      </geometry>
+      <material name="door_frame_gray3">
+        <color rgba="0.72 0.72 0.72 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="door_left_frame_joint" type="fixed">
+    <parent link="door_link"/>
+    <child link="door_left_frame"/>
+    <origin xyz="0.03 -0.32 0" rpy="0 0 0"/>
+  </joint>
+
+  
+  <link name="door_right_frame">
+    <visual>
+      <origin xyz="0.012 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.02 0.06 0.78"/>
+      </geometry>
+      <material name="door_frame_gray4">
+        <color rgba="0.72 0.72 0.72 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="door_right_frame_joint" type="fixed">
+    <parent link="door_link"/>
+    <child link="door_right_frame"/>
+    <origin xyz="0.03 0.32 0" rpy="0 0 0"/>
+  </joint>
+
+  
+  <link name="door_surface_patch">
+    <visual>
+      <origin xyz="0.005 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.50 0.60"/>
+      </geometry>
+      <material name="door_patch_blue">
+        <color rgba="0.55 0.70 0.95 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="door_surface_patch_joint" type="fixed">
+    <parent link="door_link"/>
+    <child link="door_surface_patch"/>
+    <origin xyz="0.025 0 0.00" rpy="0 0 0"/>
+  </joint>
+
+  
+  <link name="door_center_marker">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.018"/>
+      </geometry>
+      <material name="door_center_red">
+        <color rgba="1.0 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="door_center_marker_joint" type="fixed">
+    <parent link="door_link"/>
+    <child link="door_center_marker"/>
+    <origin xyz="0.03 0 0" rpy="0 0 0"/>
+  </joint>
+
+
+  <gazebo reference="door_link">
+    <material>Gazebo/White</material>
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+  </gazebo>
+
+  <gazebo reference="door_surface_patch">
+    <material>Gazebo/SkyBlue</material>
+  </gazebo>
+
+
+</robot>

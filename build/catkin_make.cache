@@ -1,0 +1,2 @@
+arm_description:arm_description_moveit_config:arm_perception
+-DCATKIN_DEVEL_PREFIX=/home/zxy/arm11_ws/devel -DCMAKE_INSTALL_PREFIX=/home/zxy/arm11_ws/install -G Unix Makefiles
